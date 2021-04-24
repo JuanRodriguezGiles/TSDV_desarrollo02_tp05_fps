@@ -31,4 +31,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
     #endregion
+    #region PLAYER
+    private int playerHP = 100;
+    private int playerScore = 0;
+    private int bullets;
+    private int clipSize;
+    public void playerHpHit(int damage)
+    {
+        playerHP -= damage;
+    }
+    public void playerScoreAdd(int score)
+    {
+        playerScore += score;
+    }
+    #endregion
 }
