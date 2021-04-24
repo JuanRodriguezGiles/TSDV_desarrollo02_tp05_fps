@@ -17,11 +17,9 @@ public class BombSpawner : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (time > spawnTimer)
-        {
-            time = 0;
-            SpawnBombs();
-        }
+        if (!(time > spawnTimer)) return;
+        time = 0;
+        SpawnBombs();
     }
     void SpawnBombs()
     {
@@ -41,9 +39,7 @@ public class BombSpawner : MonoBehaviour
     {
         Collider[] hitColliders = Physics.OverlapSphere(spawnPos, 5);
         foreach (var hitCollider in hitColliders)
-        {
             return hitCollider.attachedRigidbody == null;
-        }
         return true;
     }
-}
+}   
