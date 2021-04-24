@@ -235,7 +235,7 @@ MonoBehaviour:
   crate: {fileID: 8141742982891428700, guid: 92ee3bdb49836fa4a98588994ea730a0, type: 3}
   bombSpawnTimer: 10
   bombSpawnQuantity: 100
-  crateSpawnTimer: 2
+  crateSpawnTimer: 20
   crateSpawnQuantity: 50
 --- !u!1 &429872418
 GameObject:

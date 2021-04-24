@@ -52,5 +52,10 @@ public class GameManager : MonoBehaviour
     {
         playerScore += score;
     }
+    public void CheckGameOver()
+    {
+        if (playerHP <= 0)
+            SceneManager.LoadScene("GameOver");
+    }
     #endregion
 }

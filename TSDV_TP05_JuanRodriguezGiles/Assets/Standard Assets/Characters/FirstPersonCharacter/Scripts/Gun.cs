@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     {
         mainCamera = Camera.main;
     }
+
     void Update()
     {
         float x = Input.GetAxis("Mouse X");
@@ -21,8 +22,7 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if (!Input.GetMouseButtonDown(0)) return;
         if (!Physics.Raycast(ray, out hit, gunRange)) return;
-        if (hit.rigidbody == null) return;
-        if (hit.rigidbody.gameObject.tag != "Bomb") return;
+        if (hit.rigidbody.gameObject.tag != "Bomb" || hit.rigidbody == null) return;
         hit.rigidbody.GetComponent<Bomb>().ExplodeGun();
     }
 }

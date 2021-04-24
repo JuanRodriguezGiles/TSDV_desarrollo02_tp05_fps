@@ -10,6 +10,7 @@ public class Bomb : MonoBehaviour
     {
         GameManager.Get().PlayerHpHit(bombDamage);
         Destroy(gameObject);
+        GameManager.Get().CheckGameOver();
     }
     public void ExplodeGun()
     {
