@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
@@ -248,8 +249,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (body == null || body.isKinematic) return;
             //----------------------------------------------------------------------------------------------------
             //body.AddForceAtPosition(m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
-            if (body.tag != "Bomb") return;
-            body.gameObject.GetComponent<Bomb>().ExplodePlayer();
+            if (body.tag == "Bomb")
+                body.gameObject.GetComponent<Bomb>().ExplodePlayer();
+            if (body.tag == "Crate") 
+                body.gameObject.GetComponent<Crate>().PickUp();
         }
     }
 }
