@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
     #region PLAYER
     private int playerHP = 100;
     private int playerScore = 0;
-    private int bullets;
-    private int clipSize;
+    private int bullets = 7;
+    private int clipSize = 7;
     public int GetPlayerHP()
     {
         return playerHP;
@@ -51,6 +51,19 @@ public class GameManager : MonoBehaviour
     public void PlayerScoreAdd(int score)
     {
         playerScore += score;
+    }
+    public int GetBullets()
+    {
+        return bullets;
+    }
+    public void SetBullets(int num)
+    {
+        bullets = num;
+        if (bullets < 0) bullets = 0;
+    }
+    public int GetClipSize()
+    {
+        return clipSize;
     }
     public void CheckGameOver()
     {

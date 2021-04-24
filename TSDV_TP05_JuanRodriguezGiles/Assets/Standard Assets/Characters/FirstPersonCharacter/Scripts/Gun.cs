@@ -9,7 +9,6 @@ public class Gun : MonoBehaviour
     {
         mainCamera = Camera.main;
     }
-
     void Update()
     {
         float x = Input.GetAxis("Mouse X");
@@ -19,10 +18,19 @@ public class Gun : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         Debug.DrawRay(ray.origin, ray.direction * gunRange, Color.red);
 
+        if (Input.GetMouseButtonDown(0)) ShootGun(ray);
+        if (Input.GetKeyDown(KeyCode.R)) ReloadGun();
+    }
+    void ShootGun(Ray ray)
+    {
         RaycastHit hit;
-        if (!Input.GetMouseButtonDown(0)) return;
-        if (!Physics.Raycast(ray, out hit, gunRange)) return;
+        GameManager.Get().SetBullets(GameManager.Get().GetBullets() - 1);
+        if (!Physics.Raycast(ray, out hit, gunRange) || GameManager.Get().GetBullets() == 0) return;
         if (hit.rigidbody.gameObject.tag != "Bomb" || hit.rigidbody == null) return;
         hit.rigidbody.GetComponent<Bomb>().ExplodeGun();
+    }
+    void ReloadGun()
+    {
+        GameManager.Get().SetBullets(GameManager.Get().GetClipSize());
     }
 }
