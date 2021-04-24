@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
     private int playerScore = 0;
     private int bullets;
     private int clipSize;
+    public int getPlayerHP()
+    {
+        return playerHP;
+    }
     public void playerHpHit(int damage)
     {
         playerHP -= damage;
