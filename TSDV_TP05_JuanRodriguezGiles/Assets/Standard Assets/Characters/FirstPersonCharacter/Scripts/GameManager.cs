@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
     {
         playerHP -= damage;
     }
+    public int GetPlayerScore()
+    {
+        return playerScore;
+    }
     public void PlayerScoreAdd(int score)
     {
         playerScore += score;

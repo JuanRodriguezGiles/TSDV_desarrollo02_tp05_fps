@@ -21,6 +21,7 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if (!Input.GetMouseButtonDown(0)) return;
         if (!Physics.Raycast(ray, out hit, gunRange)) return;
+        if (hit.rigidbody == null) return;
         if (hit.rigidbody.gameObject.tag != "Bomb") return;
         hit.rigidbody.GetComponent<Bomb>().ExplodeGun();
     }
