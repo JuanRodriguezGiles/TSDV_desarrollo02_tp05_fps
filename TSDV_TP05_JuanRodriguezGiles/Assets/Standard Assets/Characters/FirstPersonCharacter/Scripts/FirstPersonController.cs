@@ -248,7 +248,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (m_CollisionFlags == CollisionFlags.Below) return;
             if (body == null || body.isKinematic) return;
             //----------------------------------------------------------------------------------------------------
-            //body.AddForceAtPosition(m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
             if (body.tag == "Bomb")
                 body.gameObject.GetComponent<Bomb>().ExplodePlayer();
             if (body.tag == "Crate") 

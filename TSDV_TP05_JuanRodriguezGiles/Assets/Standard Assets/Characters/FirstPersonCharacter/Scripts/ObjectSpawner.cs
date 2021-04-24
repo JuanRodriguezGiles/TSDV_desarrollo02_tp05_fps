@@ -41,8 +41,8 @@ public class ObjectSpawner : MonoBehaviour
             do
             {
                 spawnPos.x = Random.Range(1, bounds.x);
-                spawnPos.y = 0.5f;
                 spawnPos.z = Random.Range(1, bounds.z);
+                spawnPos.y = terrain.terrainData.GetHeight((int) spawnPos.x, (int) spawnPos.z);
             } while (!IsPosValid(spawnPos));
             Instantiate(bomb, spawnPos, Quaternion.identity);
         }

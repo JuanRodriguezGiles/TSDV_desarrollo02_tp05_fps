@@ -366,7 +366,7 @@ MonoBehaviour:
   terrain: {fileID: 621354599}
   bomb: {fileID: 7686494519070135987, guid: f52535ca9f6c7704590e33e6e749ff06, type: 3}
   crate: {fileID: 8141742982891428700, guid: 92ee3bdb49836fa4a98588994ea730a0, type: 3}
-  bombSpawnTimer: 10
+  bombSpawnTimer: 2
   bombSpawnQuantity: 100
   crateSpawnTimer: 20
   crateSpawnQuantity: 50
@@ -760,7 +760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630312820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 253.9, y: 1.205, z: 206.4}
+  m_LocalPosition: {x: 253.9, y: 1.205, z: 187.52}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children:
   - {fileID: 630608726}
@@ -1176,6 +1176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.7080002
+      objectReference: {fileID: 0}
+    - target: {fileID: 712677616906571766, guid: f93f5cb2612aec342a81acfead9a54f3,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f93f5cb2612aec342a81acfead9a54f3, type: 3}

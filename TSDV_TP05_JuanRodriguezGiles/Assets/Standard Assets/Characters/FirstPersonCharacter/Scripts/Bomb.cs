@@ -8,8 +8,8 @@ public class Bomb : MonoBehaviour
     [SerializeField] private int bombPoints = 100;
     public void ExplodePlayer()
     {
-        GameManager.Get().PlayerHpHit(bombDamage);
         Destroy(gameObject);
+        GameManager.Get().PlayerHpHit(bombDamage);
         GameManager.Get().CheckGameOver();
     }
     public void ExplodeGun()

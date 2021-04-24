@@ -26,7 +26,8 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         GameManager.Get().SetBullets(GameManager.Get().GetBullets() - 1);
         if (!Physics.Raycast(ray, out hit, gunRange) || GameManager.Get().GetBullets() == 0) return;
-        if (hit.rigidbody.gameObject.tag != "Bomb" || hit.rigidbody == null) return;
+        if (hit.rigidbody == null) return;
+        if (hit.rigidbody.gameObject.tag != "Bomb") return;
         hit.rigidbody.GetComponent<Bomb>().ExplodeGun();
     }
     void ReloadGun()
