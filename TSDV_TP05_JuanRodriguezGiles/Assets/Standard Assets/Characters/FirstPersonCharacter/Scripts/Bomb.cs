@@ -5,9 +5,15 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     [SerializeField] private int bombDamage = 50;
-    public void Explode()
+    [SerializeField] private int bombPoints = 100;
+    public void ExplodePlayer()
     {
-        GameManager.Get().playerHpHit(bombDamage);
+        GameManager.Get().PlayerHpHit(bombDamage);
+        Destroy(gameObject);
+    }
+    public void ExplodeGun()
+    {
+        //GameManager.Get().PlayerScoreAdd(bombPoints);
         Destroy(gameObject);
     }
 }
