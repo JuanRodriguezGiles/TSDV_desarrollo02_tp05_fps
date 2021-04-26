@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
@@ -25,6 +27,10 @@ public class GameManager : MonoBehaviour
     public void LoadGameplayScene()
     {
         SceneManager.LoadScene("Gameplay");
+
+        fs = File.OpenRead("playerHighScore.dat");
+        playerHighScore = (int)bf.Deserialize(fs);
+        fs.Close();
     }
     public void LoadGameOverScene()
     {
@@ -34,6 +40,7 @@ public class GameManager : MonoBehaviour
     #region PLAYER
     private int playerHP = 100;
     private int playerScore = 0;
+    private int playerHighScore = 0;
     private int bullets = 7;
     private int clipSize = 7;
     public int GetPlayerHP()
@@ -69,6 +76,25 @@ public class GameManager : MonoBehaviour
     {
         if (playerHP <= 0)
             SceneManager.LoadScene("GameOver");
+    }
+    #endregion
+    #region SavedData
+    private FileStream fs;
+    private BinaryFormatter bf = new BinaryFormatter();
+    void OnApplicationQuit()
+    {
+        fs = File.OpenWrite("playerHighScore.dat");
+        bf.Serialize(fs, playerHighScore);
+        fs.Close();
+    }
+    public void UpdateHighScore()
+    {
+        if (playerScore >= playerHighScore)
+            playerHighScore = playerScore;
+    }
+    public int GetPlayerHighScore()
+    {
+        return playerHighScore;
     }
     #endregion
 }

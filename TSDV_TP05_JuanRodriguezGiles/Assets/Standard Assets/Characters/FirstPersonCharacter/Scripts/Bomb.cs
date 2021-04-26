@@ -15,6 +15,7 @@ public class Bomb : MonoBehaviour
     public void ExplodeGun()
     {
         GameManager.Get().PlayerScoreAdd(bombPoints);
+        GameManager.Get().UpdateHighScore();
         Destroy(gameObject);
     }
 }

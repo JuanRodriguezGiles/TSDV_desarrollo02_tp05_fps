@@ -8,6 +8,7 @@ public class Crate : MonoBehaviour
     public void PickUp()
     {
         GameManager.Get().PlayerScoreAdd(cratePoints);
+        GameManager.Get().UpdateHighScore();
         Destroy(gameObject);
     }
 }
