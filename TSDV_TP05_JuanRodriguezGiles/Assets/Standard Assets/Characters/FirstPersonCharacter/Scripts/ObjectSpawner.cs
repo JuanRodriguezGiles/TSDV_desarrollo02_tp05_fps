@@ -12,7 +12,7 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private float bombSpawnTimer = 10;
     [SerializeField] private int bombSpawnQuantity = 100;
     [SerializeField] private float crateSpawnTimer = 20;
-    [SerializeField] private int crateSpawnQuantity = 50;
+    [SerializeField] private int crateSpawnQuantity = 75;
     void Start()
     {
         bounds = terrain.terrainData.bounds.max;
@@ -55,8 +55,8 @@ public class ObjectSpawner : MonoBehaviour
             do
             {
                 spawnPos.x = Random.Range(1, bounds.x);
-                spawnPos.y = 0.5f;
                 spawnPos.z = Random.Range(1, bounds.z);
+                spawnPos.y = terrain.terrainData.GetHeight((int)spawnPos.x, (int)spawnPos.z);
             } while (!IsPosValid(spawnPos));
             Instantiate(crate, spawnPos, Quaternion.identity);
         }
