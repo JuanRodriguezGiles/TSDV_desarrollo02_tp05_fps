@@ -4,9 +4,11 @@ using UnityEngine;
 using TMPro;
 public class UIGameOver : MonoBehaviour
 {
-    public TMP_Text playerScore;
+    public TMP_Text playerScoreText;
+    public TMP_Text playerHighScoreText;
     void Start()
     {
-        playerScore.text = "Final score: " + GameManager.Get().GetPlayerScore().ToString();
+        playerScoreText.text = "Final score: " + GameManager.Get().GetPlayerScore().ToString();
+        playerHighScoreText.text = "High Score: " + GameManager.Get().GetPlayerHighScore().ToString();
     }
 }

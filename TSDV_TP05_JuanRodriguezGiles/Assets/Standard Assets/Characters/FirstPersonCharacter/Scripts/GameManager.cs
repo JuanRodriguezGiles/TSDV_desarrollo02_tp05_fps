@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
+
 public class GameManager : MonoBehaviour
 {
     #region INSTANCE
@@ -24,13 +27,17 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region SCENES
+
     public void LoadGameplayScene()
     {
         SceneManager.LoadScene("Gameplay");
 
-        fs = File.OpenRead("playerHighScore.dat");
-        playerHighScore = (int)bf.Deserialize(fs);
-        fs.Close();
+        if (File.Exists("playerHighScore.dat"))
+        {
+            fs = File.OpenRead("playerHighScore.dat");
+            playerHighScore = (int) bf.Deserialize(fs);
+            fs.Close();
+        }
     }
     public void LoadGameOverScene()
     {
@@ -43,6 +50,15 @@ public class GameManager : MonoBehaviour
     private int playerHighScore = 0;
     private int bullets = 7;
     private int clipSize = 7;
+    [Serializable]
+    struct playerPos
+    {
+        public float x;
+        public float y;
+        public float z;
+    }
+    private playerPos currentPlayerPos;
+
     public int GetPlayerHP()
     {
         return playerHP;
@@ -54,6 +70,15 @@ public class GameManager : MonoBehaviour
     public int GetPlayerScore()
     {
         return playerScore;
+    }
+    public int GetPlayerHighScore()
+    {
+        return playerHighScore;
+    }
+    public void UpdateHighScore()
+    {
+        if (playerScore >= playerHighScore)
+            playerHighScore = playerScore;
     }
     public void PlayerScoreAdd(int score)
     {
@@ -78,23 +103,32 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("GameOver");
     }
     #endregion
-    #region SavedData
+    #region SAVED_DATA
     private FileStream fs;
     private BinaryFormatter bf = new BinaryFormatter();
     void OnApplicationQuit()
     {
         fs = File.OpenWrite("playerHighScore.dat");
+
         bf.Serialize(fs, playerHighScore);
+
         fs.Close();
     }
-    public void UpdateHighScore()
+    void SavePlayerPos()
     {
-        if (playerScore >= playerHighScore)
-            playerHighScore = playerScore;
+
     }
-    public int GetPlayerHighScore()
+    void LoadPlayerPos()
     {
-        return playerHighScore;
+
     }
     #endregion
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            SavePlayerPos();
+        if (Input.GetKeyDown(KeyCode.Alpha2)) 
+            LoadPlayerPos();
+    }
 }
