@@ -42,7 +42,7 @@ public class ObjectSpawner : MonoBehaviour
             {
                 spawnPos.x = Random.Range(1, bounds.x);
                 spawnPos.z = Random.Range(1, bounds.z);
-                spawnPos.y = terrain.terrainData.GetHeight((int) spawnPos.x, (int) spawnPos.z);
+                spawnPos.y = terrain.terrainData.GetHeight((int)spawnPos.x, (int)spawnPos.z);
             } while (!IsPosValid(spawnPos));
             Instantiate(bomb, spawnPos, Quaternion.identity);
         }
@@ -63,7 +63,8 @@ public class ObjectSpawner : MonoBehaviour
     }
     bool IsPosValid(Vector3 spawnPos)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(spawnPos, 5);
+        float overlapRadius = 5;
+        Collider[] hitColliders = Physics.OverlapSphere(spawnPos, overlapRadius);
         foreach (var hitCollider in hitColliders)
             return hitCollider.attachedRigidbody == null;
         return true;

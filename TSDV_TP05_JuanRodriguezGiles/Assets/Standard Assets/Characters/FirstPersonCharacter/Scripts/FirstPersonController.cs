@@ -240,7 +240,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MouseLook.LookRotation(transform, m_Camera.transform);
         }
 
-
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
             Rigidbody body = hit.collider.attachedRigidbody;
@@ -250,7 +249,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //----------------------------------------------------------------------------------------------------
             if (body.tag == "Bomb")
                 body.gameObject.GetComponent<Bomb>().ExplodePlayer();
-            if (body.tag == "Crate") 
+            if (body.tag == "Crate")
                 body.gameObject.GetComponent<Crate>().PickUp();
         }
     }

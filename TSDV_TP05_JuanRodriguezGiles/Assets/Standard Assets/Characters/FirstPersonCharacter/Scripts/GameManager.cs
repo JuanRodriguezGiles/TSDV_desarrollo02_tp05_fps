@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-    #region SCENES
 
+    #region SCENES
     public void LoadGameplayScene()
     {
         SceneManager.LoadScene("Gameplay");
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         if (File.Exists("playerHighScore.dat"))
         {
             fs = File.OpenRead("playerHighScore.dat");
-            playerHighScore = (int) bf.Deserialize(fs);
+            playerHighScore = (int)bf.Deserialize(fs);
             fs.Close();
         }
     }
@@ -44,20 +44,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
     #endregion
+
     #region PLAYER
     private int playerHP = 100;
     private int playerScore = 0;
     private int playerHighScore = 0;
     private int bullets = 7;
     private int clipSize = 7;
-    [Serializable]
-    struct playerPos
-    {
-        public float x;
-        public float y;
-        public float z;
-    }
-    private playerPos currentPlayerPos;
 
     public int GetPlayerHP()
     {
@@ -103,6 +96,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("GameOver");
     }
     #endregion
+
     #region SAVED_DATA
     private FileStream fs;
     private BinaryFormatter bf = new BinaryFormatter();
@@ -114,21 +108,13 @@ public class GameManager : MonoBehaviour
 
         fs.Close();
     }
-    void SavePlayerPos()
-    {
-
-    }
-    void LoadPlayerPos()
-    {
-
-    }
     #endregion
 
-    void Update()
+    #region INTERFACES
+    public interface IHittable
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            SavePlayerPos();
-        if (Input.GetKeyDown(KeyCode.Alpha2)) 
-            LoadPlayerPos();
+        void DealDamage();
+        void Die();
     }
+    #endregion
 }
