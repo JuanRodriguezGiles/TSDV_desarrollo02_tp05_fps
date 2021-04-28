@@ -116,5 +116,9 @@ public class GameManager : MonoBehaviour
         void DealDamage();
         void Die();
     }
+    public interface IPickUp
+    {
+        void PickUp();
+    }
     #endregion
 }

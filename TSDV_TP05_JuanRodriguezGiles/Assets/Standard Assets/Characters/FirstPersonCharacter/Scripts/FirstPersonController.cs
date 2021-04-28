@@ -247,10 +247,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (m_CollisionFlags == CollisionFlags.Below) return;
             if (body == null || body.isKinematic) return;
             //----------------------------------------------------------------------------------------------------
-            if (body.tag == "Bomb")
-                body.gameObject.GetComponent<Bomb>().ExplodePlayer();
-            if (body.tag == "Crate")
-                body.gameObject.GetComponent<Crate>().PickUp();
+            GameManager.IHittable hittable = body.GetComponent<GameManager.IHittable>();
+            GameManager.IPickUp pickUp = body.GetComponent<GameManager.IPickUp>();
+            if (hittable != null)
+                hittable.DealDamage();
+            if (pickUp != null)
+                pickUp.PickUp();
         }
     }
 }
