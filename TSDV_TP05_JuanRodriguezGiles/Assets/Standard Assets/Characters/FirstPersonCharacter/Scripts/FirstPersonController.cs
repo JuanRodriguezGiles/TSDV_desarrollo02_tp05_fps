@@ -249,10 +249,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //----------------------------------------------------------------------------------------------------
             GameManager.IHittable hittable = body.GetComponent<GameManager.IHittable>();
             GameManager.IPickUp pickUp = body.GetComponent<GameManager.IPickUp>();
-            if (hittable != null)
-                hittable.DealDamage();
-            if (pickUp != null)
-                pickUp.PickUp();
+
+            hittable?.DealDamage();
+            pickUp?.PickUp();
         }
     }
 }
