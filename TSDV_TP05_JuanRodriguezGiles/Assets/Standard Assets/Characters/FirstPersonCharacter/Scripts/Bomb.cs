@@ -1,21 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
 public class Bomb : MonoBehaviour, GameManager.IHittable
 {
-    [SerializeField] private int bombDamage = 50;
-    [SerializeField] private int bombPoints = 100;
-    public void DealDamage()
+    public delegate void BombDestroyed(Bomb bomb);
+    public delegate void BombExploded(Bomb bomb);
+    public BombExploded OnBombExploded;
+    public BombDestroyed OnBombDestroyed;
+    [SerializeField] private int damage = 50;
+    [SerializeField] private int points = 100;
+    public int Damage => this.damage;
+    public int Points => this.points;
+    void Awake()
     {
-        Destroy(gameObject);
-        GameManager.Get().PlayerHpHit(bombDamage);
-        GameManager.Get().CheckGameOver();
+        OnBombExploded += Explosion;
+        OnBombDestroyed += DiedAction;
     }
-    public void Die()
+    private void DiedAction(Bomb bomb)
     {
-        GameManager.Get().PlayerScoreAdd(bombPoints);
-        GameManager.Get().UpdateHighScore();
+        GameManager.Get().PlayerScore += bomb.points;
+        UIGameplay.Get().UpdateScoreText();
         Destroy(gameObject);
+    }
+    private void Explosion(Bomb bomb)
+    {
+        Destroy(gameObject);
+        GameManager.Get().PlayerHP -= bomb.damage;
+        GameManager.Get().CheckGameOver();
+        UIGameplay.Get().UpdateHPText();
+    }
+    public void OnHit()
+    {
+        OnBombDestroyed?.Invoke(this);
+    }
+    public void OnDealDamage()
+    {
+        OnBombExploded?.Invoke(this);
     }
 }

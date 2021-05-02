@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 public class UIGameOver : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class UIGameOver : MonoBehaviour
     public TMP_Text playerHighScoreText;
     void Start()
     {
-        playerScoreText.text = "Final score: " + GameManager.Get().GetPlayerScore().ToString();
-        playerHighScoreText.text = "High Score: " + GameManager.Get().GetPlayerHighScore().ToString();
+        playerScoreText.text = "Final score: " + GameManager.Get().PlayerScore.ToString();
+        playerHighScoreText.text = "High Score: " + GameManager.Get().PlayerHighScore.ToString();
     }
 }

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityStandardAssets.Characters.FirstPerson;
-
 public class GameManager : MonoBehaviour
 {
     #region INSTANCE
@@ -39,7 +34,7 @@ public class GameManager : MonoBehaviour
             fs.Close();
         }
     }
-    public void LoadGameOverScene()
+    private void LoadGameOverScene()
     {
         SceneManager.LoadScene("GameOver");
     }
@@ -49,51 +44,25 @@ public class GameManager : MonoBehaviour
     private int playerHP = 100;
     private int playerScore = 0;
     private int playerHighScore = 0;
-    private int bullets = 7;
-    private int clipSize = 7;
-
-    public int GetPlayerHP()
+    public int PlayerHP
     {
-        return playerHP;
+        get => this.playerHP;
+        set => this.playerHP = value;
     }
-    public void PlayerHpHit(int damage)
+    public int PlayerScore
     {
-        playerHP -= damage;
+        get => this.playerScore;
+        set => this.playerScore = value;
     }
-    public int GetPlayerScore()
+    public int PlayerHighScore
     {
-        return playerScore;
-    }
-    public int GetPlayerHighScore()
-    {
-        return playerHighScore;
-    }
-    public void UpdateHighScore()
-    {
-        if (playerScore >= playerHighScore)
-            playerHighScore = playerScore;
-    }
-    public void PlayerScoreAdd(int score)
-    {
-        playerScore += score;
-    }
-    public int GetBullets()
-    {
-        return bullets;
-    }
-    public void SetBullets(int num)
-    {
-        bullets = num;
-        if (bullets < 0) bullets = 0;
-    }
-    public int GetClipSize()
-    {
-        return clipSize;
+        get => this.playerHighScore;
+        set => this.playerHighScore = value;
     }
     public void CheckGameOver()
     {
         if (playerHP <= 0)
-            SceneManager.LoadScene("GameOver");
+            LoadGameOverScene();
     }
     #endregion
 
@@ -113,12 +82,12 @@ public class GameManager : MonoBehaviour
     #region INTERFACES
     public interface IHittable
     {
-        void DealDamage();
-        void Die();
+        void OnDealDamage();
+        void OnHit();
     }
     public interface IPickUp
     {
-        void PickUp();
+        void OnPickUp();
     }
     #endregion
 }

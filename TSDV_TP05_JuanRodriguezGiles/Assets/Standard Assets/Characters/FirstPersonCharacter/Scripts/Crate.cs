@@ -1,13 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 public class Crate : MonoBehaviour,GameManager.IPickUp
 {
-    [SerializeField] private int cratePoints = 50;
-    public void PickUp()
+    public delegate void CratePickUp(Crate crate);
+    public CratePickUp OnCratePickUp;
+    private int points = 50;
+    void Awake()
     {
-        GameManager.Get().PlayerScoreAdd(cratePoints);
-        GameManager.Get().UpdateHighScore();
+        OnCratePickUp += PickedUpAction;
+    }
+    void PickedUpAction(Crate crate)
+    {
+        GameManager.Get().PlayerScore += crate.points;
+        UIGameplay.Get().UpdateScoreText();
         Destroy(gameObject);
+    }
+    public void OnPickUp()
+    {
+        OnCratePickUp?.Invoke(this);
     }
 }

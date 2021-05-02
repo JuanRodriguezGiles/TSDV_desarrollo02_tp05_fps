@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     public Terrain terrain;
@@ -17,7 +15,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         bounds = terrain.terrainData.bounds.max;
     }
-
+    
     void Update()
     {
         bombTimer += Time.deltaTime;

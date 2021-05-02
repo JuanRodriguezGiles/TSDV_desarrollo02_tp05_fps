@@ -1,5 +1,3 @@
-using System;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
@@ -250,8 +248,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             GameManager.IHittable hittable = body.GetComponent<GameManager.IHittable>();
             GameManager.IPickUp pickUp = body.GetComponent<GameManager.IPickUp>();
 
-            hittable?.DealDamage();
-            pickUp?.PickUp();
+            hittable?.OnDealDamage();
+            pickUp?.OnPickUp();
         }
     }
 }
