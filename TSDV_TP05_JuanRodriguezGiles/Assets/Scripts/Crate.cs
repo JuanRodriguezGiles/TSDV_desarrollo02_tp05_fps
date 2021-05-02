@@ -11,7 +11,7 @@ public class Crate : MonoBehaviour,GameManager.IPickUp
     void PickedUpAction(Crate crate)
     {
         GameManager.Get().PlayerScore += crate.points;
-        UIGameplay.Get().UpdateScoreText();
+        //UIGameplay.Get().UpdateScoreText();
         Destroy(gameObject);
     }
     public void OnPickUp()

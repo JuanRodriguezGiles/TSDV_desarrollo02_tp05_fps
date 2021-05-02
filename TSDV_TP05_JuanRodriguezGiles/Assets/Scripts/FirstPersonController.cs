@@ -245,10 +245,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (m_CollisionFlags == CollisionFlags.Below) return;
             if (body == null || body.isKinematic) return;
             //----------------------------------------------------------------------------------------------------
-            GameManager.IHittable hittable = body.GetComponent<GameManager.IHittable>();
+            //GameManager.IHittable hittable = body.GetComponent<GameManager.IHittable>();
             GameManager.IPickUp pickUp = body.GetComponent<GameManager.IPickUp>();
 
-            hittable?.OnDealDamage();
+            //hittable?.OnDealDamage();
             pickUp?.OnPickUp();
         }
     }
