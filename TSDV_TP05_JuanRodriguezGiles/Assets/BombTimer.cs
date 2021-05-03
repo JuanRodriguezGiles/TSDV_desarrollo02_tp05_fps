@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+//ARREGLAR BUG CUANDO SE SALE Y ENTRA AL COLLIDER
 public class BombTimer : MonoBehaviour
 {
     public TMP_Text time;
     private float timer = 5;
+    private bool active = false;
     //--------------------------------------------------------------------------------
     void OnEnable()
     {
@@ -25,7 +26,7 @@ public class BombTimer : MonoBehaviour
     //--------------------------------------------------------------------------------
     void OnBombTriggered(Bomb bomb, float triggerTime)
     {
-        if (bomb.gameObject.GetInstanceID() != this.GetComponentInParent<Bomb>().id) return;
+        if (bomb.gameObject.GetInstanceID() != this.GetComponentInParent<Bomb>().id || active) return;
         InvokeRepeating("UpdateText", 0, 1);
     }
 }

@@ -32,7 +32,7 @@ public class BallLauncher : MonoBehaviour
 
         if (Bullets == 0) return;
         GameObject go = Instantiate(bulletGameObject, transform.position, Quaternion.identity);
-        go.GetComponent<Rigidbody>().velocity = new Vector3(0, 10, 20);
+        go.GetComponent<Rigidbody>().velocity += transform.parent.forward * 20;
     }
     void Reload(int currentWeapon)
     {

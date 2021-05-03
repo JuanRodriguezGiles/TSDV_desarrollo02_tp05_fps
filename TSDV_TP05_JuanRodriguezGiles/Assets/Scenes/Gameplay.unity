@@ -368,7 +368,7 @@ MonoBehaviour:
     type: 3}
   crateGameObject: {fileID: 8141742982891428700, guid: 92ee3bdb49836fa4a98588994ea730a0,
     type: 3}
-  bombSpawnTimer: 2
+  bombSpawnTimer: 10
   bombSpawnQuantity: 100
   crateSpawnTimer: 20
   crateSpawnQuantity: 75
@@ -1057,7 +1057,7 @@ PrefabInstance:
     - target: {fileID: 346043319306285259, guid: 32f50fcd73a8f1647a29b830504e7d04,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4653174540389590588, guid: 32f50fcd73a8f1647a29b830504e7d04,
         type: 3}
