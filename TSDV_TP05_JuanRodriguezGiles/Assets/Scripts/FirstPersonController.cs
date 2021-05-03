@@ -246,7 +246,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (body == null || body.isKinematic) return;
             //----------------------------------------------------------------------------------------------------
             if (hit.gameObject.tag == "Bomb")
-                GameManager.Get().OnBombExploded(body.GetComponent<Bomb>());
+                hit.transform.GetComponent<Bomb>().OnAttack();
+            if (hit.gameObject.tag == "Crate")
+                hit.transform.GetComponent<Crate>().OnPickUp();
         }
     }
 }

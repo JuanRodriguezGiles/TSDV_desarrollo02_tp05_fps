@@ -143,6 +143,12 @@ public class GameManager : MonoBehaviour
         onBombDestroyed?.Invoke(bomb);
     }
     //--------------------------------------------------------------------------------
+    public static event Action<Crate> onCratePickUp;
+    public void OnCratePickUp(Crate crate)
+    {
+        onCratePickUp?.Invoke(crate);
+    }
+    //--------------------------------------------------------------------------------
     public static event Action<int> onPlayerHpChange;
     public void OnPlayerHpChange(int hpChange)
     {

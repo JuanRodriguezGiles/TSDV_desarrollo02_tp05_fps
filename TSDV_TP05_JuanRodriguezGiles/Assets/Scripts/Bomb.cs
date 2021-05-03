@@ -8,7 +8,7 @@ public class Bomb : MonoBehaviour,GameManager.IEnemy
     }
     public void OnAttack()
     {
-
+        GameManager.Get().OnBombExploded(this);
     }
     //--------------------------------------------------------------------------------
     public int id;
@@ -57,7 +57,7 @@ public class Bomb : MonoBehaviour,GameManager.IEnemy
     //--------------------------------------------------------------------------------
     void OnBombTriggered(Bomb bomb, float triggerTime)
     {
-        if (bomb.gameObject.GetInstanceID() != this.id||currentState==EnemyState.FuseLit) return;
+        if (bomb.gameObject.GetInstanceID() != this.id || currentState == EnemyState.FuseLit) return;
         triggeredTime = triggerTime;
         currentState = EnemyState.FuseLit;
     }
