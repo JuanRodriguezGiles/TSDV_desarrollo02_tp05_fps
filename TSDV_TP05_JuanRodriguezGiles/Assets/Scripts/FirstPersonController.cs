@@ -249,6 +249,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 hit.transform.GetComponent<Bomb>().OnAttack();
             if (hit.gameObject.tag == "Crate")
                 hit.transform.GetComponent<Crate>().OnPickUp();
+            if (hit.gameObject.tag == "Ghost")
+                hit.transform.GetComponent<Ghost>().OnAttack();
         }
     }
 }

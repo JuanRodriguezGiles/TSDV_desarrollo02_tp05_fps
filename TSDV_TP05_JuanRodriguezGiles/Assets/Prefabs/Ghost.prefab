@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 6386496519766567781}
   - component: {fileID: 1732534880000250428}
   - component: {fileID: 7391443065685131888}
+  - component: {fileID: -5624197616992060501}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Ghost
@@ -210,3 +211,19 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d0c9d9869110df44cb5f6db00d080a6c, type: 2}
   - {fileID: 2100000, guid: d97e9cabd0075e74cbdcf99fbfe0e097, type: 2}
   - {fileID: 2100000, guid: 7849e8d63ef801741a5ee8e2668b35e1, type: 2}
+--- !u!54 &-5624197616992060501
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244903196684433678}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

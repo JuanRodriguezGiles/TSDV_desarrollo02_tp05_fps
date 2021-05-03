@@ -158,6 +158,11 @@ public class GameManager : MonoBehaviour
     {
         onGhostDeath?.Invoke(ghost);
     }
+    public static event Action<Ghost> onGhostAttack;
+    public void OnGhostAttack(Ghost ghost)
+    {
+        onGhostAttack?.Invoke(ghost);
+    }
     //--------------------------------------------------------------------------------
     public static event Action<Crate> onCratePickUp;
     public void OnCratePickUp(Crate crate)

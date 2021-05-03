@@ -11,7 +11,7 @@ public class Ghost : MonoBehaviour, GameManager.IEnemy
     }
     public void OnAttack()
     {
-
+        GameManager.Get().OnGhostAttack(this);
     }
     //--------------------------------------------------------------------------------
     public int id;
@@ -49,6 +49,13 @@ public class Ghost : MonoBehaviour, GameManager.IEnemy
 
         GameManager.onGhostDamaged += OnGhostDamaged;
         GameManager.onGhostDeath += OnGhostDeath;
+        GameManager.onGhostAttack += OnGhostAttack;
+    }
+    void OnDisable()
+    {
+        GameManager.onGhostDamaged -= OnGhostDamaged;
+        GameManager.onGhostDeath -= OnGhostDeath;
+        GameManager.onGhostAttack -= OnGhostAttack;
     }
     //--------------------------------------------------------------------------------
     void Update()
@@ -105,6 +112,11 @@ public class Ghost : MonoBehaviour, GameManager.IEnemy
         if (ghost.gameObject.GetInstanceID() != this.id) return;
         GameManager.Get().OnPlayerScoreChange(ghost.Points);
         Destroy(this.gameObject);
+    }
+    void OnGhostAttack(Ghost ghost)
+    {
+        if (ghost.gameObject.GetInstanceID() != this.id) return;
+        GameManager.Get().OnPlayerHpChange(-ghost.Damage);
     }
     //--------------------------------------------------------------------------------
     void GetNewTargetPos()
