@@ -26,7 +26,8 @@ public class BombTimer : MonoBehaviour
     //--------------------------------------------------------------------------------
     void OnBombTriggered(Bomb bomb, float triggerTime)
     {
-        if (bomb.gameObject.GetInstanceID() != this.GetComponentInParent<Bomb>().id || active) return;
+        if (bomb.gameObject.GetInstanceID() != this.GetComponentInParent<Bomb>().id || this.active) return;
+        active = true;
         InvokeRepeating("UpdateText", 0, 1);
     }
 }
