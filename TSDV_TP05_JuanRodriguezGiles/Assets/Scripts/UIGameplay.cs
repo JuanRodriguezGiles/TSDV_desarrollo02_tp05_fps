@@ -14,6 +14,7 @@ public class UIGameplay : MonoBehaviour
         GameManager.onWeaponSwitch += OnWeaponSwitch;
         GameManager.onWeaponShoot += UpdateGunInfoText;
         GameManager.onWeaponReload += UpdateGunInfoText;
+        GameManager.onPlayerHpChange += UpdateHPText;
     }
     void OnDisable()
     {
@@ -31,11 +32,12 @@ public class UIGameplay : MonoBehaviour
     void Start()
     {
         UpdateGunInfoText(0);
+        UpdateHPText(0);
     }
     //--------------------------------------------------------------------------------
-    void UpdateHPText()
+    void UpdateHPText(int hpChange)
     {
-
+        playerHpText.text = "HP: " + GameManager.Get().PlayerHP.ToString();
     }
     void UpdateScoreText()
     {

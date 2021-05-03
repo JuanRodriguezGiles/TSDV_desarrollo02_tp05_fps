@@ -21,6 +21,14 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    void OnEnable()
+    {
+        onPlayerHpChange += UpdatePlayerHp;
+    }
+    void OnDisable()
+    {
+        onPlayerHpChange -= UpdatePlayerHp;
+    }
     #endregion
 
     #region SCENES
@@ -42,12 +50,17 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region PLAYER
-    public int PlayerHP { get; set; } = 100;
+    public int PlayerHP { get; set; } = 1000;
 
     public int PlayerScore { get; set; } = 0;
 
     public int PlayerHighScore { get; set; } = 0;
 
+    void UpdatePlayerHp(int hpChange)
+    {
+        PlayerHP += hpChange;
+        CheckGameOver();
+    }
     void CheckGameOver()
     {
         if (PlayerHP <= 0)
@@ -112,6 +125,12 @@ public class GameManager : MonoBehaviour
     public void OnBombDestroyed(Bomb bomb)
     {
         onBombDestroyed?.Invoke(bomb);
+    }
+    //--------------------------------------------------------------------------------
+    public static event Action<int> onPlayerHpChange;
+    public void OnPlayerHpChange(int hpChange)
+    {
+        onPlayerHpChange?.Invoke(hpChange);
     }
     //--------------------------------------------------------------------------------
     #endregion

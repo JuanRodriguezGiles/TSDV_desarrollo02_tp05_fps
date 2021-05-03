@@ -64,11 +64,10 @@ public class Bomb : MonoBehaviour,GameManager.IEnemy
     void OnBombExploded(Bomb bomb)
     {
         if (bomb.gameObject.GetInstanceID() != this.id) return;
-        float overlapRadius = GetComponentInParent<SphereCollider>().radius;
-        Collider[] hitColliders = Physics.OverlapSphere(bomb.transform.position, overlapRadius);
-        foreach (var hitCollider in hitColliders)
-            if (hitCollider.gameObject.tag == "Player")
-                GameManager.Get().PlayerHP -= bomb.Damage;
+        Vector3 playerPos = FindObjectOfType<CharacterController>().transform.position;
+        float distance = Vector3.Distance(playerPos, bomb.transform.position);
+        if (distance < 5)
+            GameManager.Get().OnPlayerHpChange(-bomb.Damage);
         Destroy(this.gameObject);
     }
     //--------------------------------------------------------------------------------
