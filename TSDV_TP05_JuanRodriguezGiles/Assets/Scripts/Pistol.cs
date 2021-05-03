@@ -40,6 +40,7 @@ public class Pistol : MonoBehaviour
         layerMask = ~layerMask;
 
         Bullets--;
+        GameManager.Get().OnWeaponInfoChange(currentWeapon);
 
         if (!Physics.Raycast(ray, out hit, Range, layerMask) || Bullets == 0) return;
         if (hit.rigidbody.GetComponent<GameManager.IEnemy>() == null || hit.rigidbody.gameObject.tag != "Bomb") return;
@@ -48,6 +49,7 @@ public class Pistol : MonoBehaviour
     void Reload(int currentWeapon)
     {
         bullets = ClipSize;
+        GameManager.Get().OnWeaponInfoChange(currentWeapon);
     }
     //--------------------------------------------------------------------------------
 }

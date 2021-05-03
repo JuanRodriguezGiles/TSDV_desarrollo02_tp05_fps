@@ -121,6 +121,11 @@ public class GameManager : MonoBehaviour
     {
         onWeaponShoot?.Invoke(currentWeapon);
     }
+    public static event Action<int> onWeaponInfoChange;
+    public void OnWeaponInfoChange(int currentWeapon)
+    {
+        onWeaponInfoChange?.Invoke(currentWeapon);
+    }
     public static event Action<int> onWeaponReload;
     public void OnWeaponReload(int currentWeapon)
     {

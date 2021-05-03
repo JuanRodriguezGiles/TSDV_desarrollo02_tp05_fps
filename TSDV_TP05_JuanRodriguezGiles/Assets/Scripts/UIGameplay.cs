@@ -10,10 +10,7 @@ public class UIGameplay : MonoBehaviour
     //--------------------------------------------------------------------------------
     void OnEnable()
     {
-        GameManager.onWeaponSwitch += UpdateGunInfoText;
-        GameManager.onWeaponSwitch += OnWeaponSwitch;
-        GameManager.onWeaponShoot += UpdateGunInfoText;
-        GameManager.onWeaponReload += UpdateGunInfoText;
+        GameManager.onWeaponInfoChange += UpdateGunInfoText;
 
         GameManager.onPlayerHpChange += UpdateHPText;
         GameManager.onPlayerScoreChange += UpdateScoreText;
@@ -21,19 +18,11 @@ public class UIGameplay : MonoBehaviour
     }
     void OnDisable()
     {
-        GameManager.onWeaponSwitch -= UpdateGunInfoText;
-        GameManager.onWeaponSwitch -= OnWeaponSwitch;
-        GameManager.onWeaponShoot -= UpdateGunInfoText;
-        GameManager.onWeaponReload -= UpdateGunInfoText;
+        GameManager.onWeaponInfoChange -= UpdateGunInfoText;
 
         GameManager.onPlayerHpChange -= UpdateHPText;
         GameManager.onPlayerScoreChange -= UpdateScoreText;
         GameManager.onPlayerHighScoreChange -= UpdateHighScoreText;
-    }
-    void OnWeaponSwitch(int currentWeapon)
-    {
-        GameManager.onWeaponReload -= UpdateGunInfoText;
-        GameManager.onWeaponReload += UpdateGunInfoText;
     }
     //--------------------------------------------------------------------------------
     void Start()
@@ -56,6 +45,7 @@ public class UIGameplay : MonoBehaviour
     {
         playerHighScoreText.text = "High Score: " + GameManager.Get().PlayerHighScore.ToString();
     }
+    //--------------------------------------------------------------------------------
     void UpdateGunInfoText(int currentWeapon)
     {
         Weapon.Weapons weapon = (Weapon.Weapons)currentWeapon;

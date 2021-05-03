@@ -6,7 +6,7 @@ public class BallLauncher : MonoBehaviour
     //--------------------------------------------------------------------------------
     public GameObject bulletGameObject;
     public int ClipSize { get; } = 5;
-    int bullets = 5;
+    public int bullets = 5;
     public int Bullets
     {
         get => this.bullets;
@@ -28,15 +28,16 @@ public class BallLauncher : MonoBehaviour
     //--------------------------------------------------------------------------------
     void Shoot(int currentWeapon)
     {
-        Bullets--;
-
-        if (Bullets == 0) return;
+        if (bullets == 0) return;
+        bullets--;
+        GameManager.Get().OnWeaponInfoChange(currentWeapon);
         GameObject go = Instantiate(bulletGameObject, transform.position, Quaternion.identity);
         go.GetComponent<Rigidbody>().velocity += transform.parent.forward * 20;
     }
     void Reload(int currentWeapon)
     {
         bullets = ClipSize;
+        GameManager.Get().OnWeaponInfoChange(currentWeapon);
     }
     //--------------------------------------------------------------------------------
 }

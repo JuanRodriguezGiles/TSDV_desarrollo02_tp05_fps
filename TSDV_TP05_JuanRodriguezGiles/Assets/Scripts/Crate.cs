@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-public class Crate : MonoBehaviour,GameManager.IPickUp
+public class Crate : MonoBehaviour, GameManager.IPickUp
 {
-    public int id;
-    int points = 50;
+    //--------------------------------------------------------------------------------
     void OnEnable()
     {
         id = this.gameObject.GetInstanceID();
@@ -12,6 +11,10 @@ public class Crate : MonoBehaviour,GameManager.IPickUp
     {
         GameManager.onCratePickUp -= OnCratePickUp;
     }
+    //--------------------------------------------------------------------------------
+    public int id;
+    int points = 50;
+    //--------------------------------------------------------------------------------
     void OnCratePickUp(Crate crate)
     {
         if (crate.gameObject.GetInstanceID() != this.id) return;
@@ -22,4 +25,5 @@ public class Crate : MonoBehaviour,GameManager.IPickUp
     {
         GameManager.Get().OnCratePickUp(this);
     }
+    //--------------------------------------------------------------------------------
 }

@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
         Pistol,
         BallLauncher
     } 
-    int currentWeapon;
+    public int currentWeapon;
     //--------------------------------------------------------------------------------
     void WeaponSwitch(int selectedWeapon)
     {
@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
             i++;
         }
         currentWeapon = selectedWeapon;
+        GameManager.Get().OnWeaponInfoChange(currentWeapon);
     }
     //--------------------------------------------------------------------------------
     void OnEnable()
