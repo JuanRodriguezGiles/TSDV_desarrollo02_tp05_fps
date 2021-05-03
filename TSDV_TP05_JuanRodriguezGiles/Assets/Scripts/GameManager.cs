@@ -25,11 +25,13 @@ public class GameManager : MonoBehaviour
     {
         onPlayerHpChange += UpdatePlayerHp;
         onPlayerScoreChange += UpdatePlayerScore;
+        onPlayerHighScoreChange += UpdatePlayerHighScore;
     }
     void OnDisable()
     {
         onPlayerHpChange -= UpdatePlayerHp;
         onPlayerScoreChange -= UpdatePlayerScore;
+        onPlayerHighScoreChange -= UpdatePlayerHighScore;
     }
     #endregion
 
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     public int PlayerScore { get; set; } = 0;
 
-    public int PlayerHighScore { get; set; } = 0;
+    public int PlayerHighScore { get; set; }
 
     void UpdatePlayerHp(int hpChange)
     {
@@ -71,6 +73,14 @@ public class GameManager : MonoBehaviour
     void UpdatePlayerScore(int scoreChange)
     {
         PlayerScore += scoreChange;
+        if (PlayerScore >= PlayerHighScore)
+        {
+            OnPlayerHighScoreChange(PlayerScore);
+        }
+    }
+    void UpdatePlayerHighScore(int scoreChange)
+    {
+        PlayerHighScore = scoreChange;
     }
     #endregion
 
@@ -142,6 +152,11 @@ public class GameManager : MonoBehaviour
     public void OnPlayerScoreChange(int scorechange)
     {
         onPlayerScoreChange?.Invoke(scorechange);
+    }
+    public static event Action<int> onPlayerHighScoreChange;
+    public void OnPlayerHighScoreChange(int scorechange)
+    {
+        onPlayerHighScoreChange?.Invoke(scorechange);
     }
     //--------------------------------------------------------------------------------
     #endregion
