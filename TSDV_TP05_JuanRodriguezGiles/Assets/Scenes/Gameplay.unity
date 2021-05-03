@@ -367,14 +367,14 @@ MonoBehaviour:
   bombGameObject: {fileID: 3339831867085299697, guid: f52535ca9f6c7704590e33e6e749ff06,
     type: 3}
   bombSpawnTimer: 10
-  bombSpawnQuantity: 1
+  bombSpawnQuantity: 100
   crateGameObject: {fileID: 8141742982891428700, guid: 92ee3bdb49836fa4a98588994ea730a0,
     type: 3}
   crateSpawnTimer: 20
-  crateSpawnQuantity: 1
+  crateSpawnQuantity: 100
   ghostGameObject: {fileID: 7244903196684433678, guid: 7182aed81491e7241ae9a934c9797a97,
     type: 3}
-  ghostSpawnTimer: 1
+  ghostSpawnTimer: 5
   ghostSpawnQuantity: 10
 --- !u!1 &429872418
 GameObject:

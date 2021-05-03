@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4910892283067674013}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7f47801b554b5774f83ee54018e1518d, type: 2}
+  - {fileID: 2100000, guid: f4b1fc7998d36924baf9b31f4cfddb9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,7 +89,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 489244615986684879}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 7391443065685131888}
   m_Layer: 0
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,11 +202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36467aa7582d46b47bd737506edb4361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomMaterials:
-  - {fileID: 2100000, guid: 31fde5ad499fdc8478a2ac672526d144, type: 2}
-  - {fileID: 2100000, guid: d97e9cabd0075e74cbdcf99fbfe0e097, type: 2}
-  - {fileID: 2100000, guid: 7849e8d63ef801741a5ee8e2668b35e1, type: 2}
   id: 0
   currentState: 1
   targetPos: {x: 0, y: 0, z: 0}
   bounds: {x: 0, y: 0, z: 0}
+  randomMaterials:
+  - {fileID: 2100000, guid: d0c9d9869110df44cb5f6db00d080a6c, type: 2}
+  - {fileID: 2100000, guid: d97e9cabd0075e74cbdcf99fbfe0e097, type: 2}
+  - {fileID: 2100000, guid: 7849e8d63ef801741a5ee8e2668b35e1, type: 2}

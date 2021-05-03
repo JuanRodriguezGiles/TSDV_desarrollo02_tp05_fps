@@ -16,7 +16,7 @@ public class ObjectSpawner : MonoBehaviour
     //--------------------------------------------------------------------------------
     public GameObject bombGameObject;
     float bombTimer = 0;
-    [SerializeField] float bombSpawnTimer = 2;
+    [SerializeField] float bombSpawnTimer = 10;
     [SerializeField] int bombSpawnQuantity = 100;
     //--------------------------------------------------------------------------------
     public GameObject crateGameObject;
@@ -27,7 +27,7 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject ghostGameObject;
     float ghostTimer = 0;
     [SerializeField] float ghostSpawnTimer = 5;
-    [SerializeField] int ghostSpawnQuantity = 1;
+    [SerializeField] int ghostSpawnQuantity = 10;
     //--------------------------------------------------------------------------------
     void Start()
     {

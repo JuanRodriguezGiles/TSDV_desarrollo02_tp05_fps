@@ -148,6 +148,17 @@ public class GameManager : MonoBehaviour
         onBombDestroyed?.Invoke(bomb);
     }
     //--------------------------------------------------------------------------------
+    public static event Action<Ghost,int> onGhostDamaged;
+    public void OnGhostDamaged(Ghost ghost,int damage)
+    {
+        onGhostDamaged?.Invoke(ghost,damage);
+    }
+    public static event Action<Ghost> onGhostDeath;
+    public void OnGhostDeath(Ghost ghost)
+    {
+        onGhostDeath?.Invoke(ghost);
+    }
+    //--------------------------------------------------------------------------------
     public static event Action<Crate> onCratePickUp;
     public void OnCratePickUp(Crate crate)
     {

@@ -7,7 +7,7 @@ public class Ghost : MonoBehaviour, GameManager.IEnemy
     //--------------------------------------------------------------------------------
     public void OnDie()
     {
-
+        GameManager.Get().OnGhostDeath(this);
     }
     public void OnAttack()
     {
@@ -38,6 +38,7 @@ public class Ghost : MonoBehaviour, GameManager.IEnemy
     //--------------------------------------------------------------------------------
     void OnEnable()
     {
+        id = this.gameObject.GetInstanceID();
         this.gameObject.GetComponent<Renderer>().material = randomMaterials[Random.Range(0, randomMaterials.Length)];
         terrain = FindObjectOfType<Terrain>();
         bounds = terrain.terrainData.bounds.center;
@@ -45,6 +46,9 @@ public class Ghost : MonoBehaviour, GameManager.IEnemy
         targetPos = transform.position;
         moveStart = Time.time;
         stopTime = Random.Range(5, 15);
+
+        GameManager.onGhostDamaged += OnGhostDamaged;
+        GameManager.onGhostDeath += OnGhostDeath;
     }
     //--------------------------------------------------------------------------------
     void Update()
@@ -89,6 +93,20 @@ public class Ghost : MonoBehaviour, GameManager.IEnemy
         }
     }
     //--------------------------------------------------------------------------------
+    void OnGhostDamaged(Ghost ghost,int damage)
+    {
+        if (ghost.gameObject.GetInstanceID() != this.id) return;
+        Hp -= damage;
+        if (Hp == 0)
+            OnDie();
+    }
+    void OnGhostDeath(Ghost ghost)
+    {
+        if (ghost.gameObject.GetInstanceID() != this.id) return;
+        GameManager.Get().OnPlayerScoreChange(ghost.Points);
+        Destroy(this.gameObject);
+    }
+    //--------------------------------------------------------------------------------
     void GetNewTargetPos()
     {
         targetPos.x = Random.Range(bounds.x - 30, bounds.x + 30);
@@ -130,4 +148,5 @@ public class Ghost : MonoBehaviour, GameManager.IEnemy
 
         transform.LookAt(FindObjectOfType<CharacterController>().transform.position, Vector3.up);
     }
+    //--------------------------------------------------------------------------------
 }
