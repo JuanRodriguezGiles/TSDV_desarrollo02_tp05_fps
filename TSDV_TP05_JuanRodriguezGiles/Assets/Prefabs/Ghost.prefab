@@ -202,6 +202,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36467aa7582d46b47bd737506edb4361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomMaterials:
+  - {fileID: 2100000, guid: 31fde5ad499fdc8478a2ac672526d144, type: 2}
+  - {fileID: 2100000, guid: d97e9cabd0075e74cbdcf99fbfe0e097, type: 2}
+  - {fileID: 2100000, guid: 7849e8d63ef801741a5ee8e2668b35e1, type: 2}
   id: 0
   currentState: 1
   targetPos: {x: 0, y: 0, z: 0}
