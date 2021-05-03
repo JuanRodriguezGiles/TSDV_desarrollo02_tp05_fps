@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region PLAYER
-    public int PlayerHP { get; set; } = 1000;
+    public int PlayerHP { get; set; } = 100;
 
     public int PlayerScore { get; set; } = 0;
 

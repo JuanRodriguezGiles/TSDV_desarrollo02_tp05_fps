@@ -16,13 +16,11 @@ public class Pistol : MonoBehaviour
     //--------------------------------------------------------------------------------
     void OnEnable()
     {
-        Debug.Log("Pistol enabled");
         GameManager.onWeaponShoot += Shoot;
         GameManager.onWeaponReload += Reload;
     }
     void OnDisable()
     {
-        Debug.Log("Pistol disabled");
         GameManager.onWeaponShoot -= Shoot;
         GameManager.onWeaponReload -= Reload;
     }

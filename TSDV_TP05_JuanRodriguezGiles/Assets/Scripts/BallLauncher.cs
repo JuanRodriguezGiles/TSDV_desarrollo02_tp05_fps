@@ -5,8 +5,9 @@ public class BallLauncher : MonoBehaviour
 {
     //--------------------------------------------------------------------------------
     public GameObject bulletGameObject;
+    float bulletSpeed = 40;
     public int ClipSize { get; } = 5;
-    public int bullets = 5;
+    int bullets = 5;
     public int Bullets
     {
         get => this.bullets;
@@ -15,13 +16,11 @@ public class BallLauncher : MonoBehaviour
     //--------------------------------------------------------------------------------
     void OnEnable()
     {
-        Debug.Log("Ball enabled");
         GameManager.onWeaponShoot += Shoot;
         GameManager.onWeaponReload += Reload;
     }
     void OnDisable()
     {
-        Debug.Log("Ball disabled");
         GameManager.onWeaponShoot -= Shoot;
         GameManager.onWeaponReload -= Reload;
     }
@@ -32,7 +31,7 @@ public class BallLauncher : MonoBehaviour
         bullets--;
         GameManager.Get().OnWeaponInfoChange(currentWeapon);
         GameObject go = Instantiate(bulletGameObject, transform.position, Quaternion.identity);
-        go.GetComponent<Rigidbody>().velocity += transform.parent.forward * 20;
+        go.GetComponent<Rigidbody>().velocity += transform.parent.forward * bulletSpeed;
     }
     void Reload(int currentWeapon)
     {

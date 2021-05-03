@@ -4,11 +4,9 @@ using Random = UnityEngine.Random;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public Terrain terrain;
-    public GameObject bombGameObject;
-    public GameObject crateGameObject;
-    Vector3 bounds;
     //--------------------------------------------------------------------------------
+    public Terrain terrain;
+    Vector3 bounds;
     enum ObjectTypes
     {
         Bomb,
@@ -16,13 +14,20 @@ public class ObjectSpawner : MonoBehaviour
         Ghost
     }
     //--------------------------------------------------------------------------------
+    public GameObject bombGameObject;
     float bombTimer = 0;
     [SerializeField] float bombSpawnTimer = 2;
     [SerializeField] int bombSpawnQuantity = 100;
     //--------------------------------------------------------------------------------
+    public GameObject crateGameObject;
     float crateTimer = 0;
     [SerializeField] float crateSpawnTimer = 20;
     [SerializeField] int crateSpawnQuantity = 75;
+    //--------------------------------------------------------------------------------
+    public GameObject ghostGameObject;
+    float ghostTimer = 0;
+    [SerializeField] float ghostSpawnTimer = 5;
+    [SerializeField] int ghostSpawnQuantity = 1;
     //--------------------------------------------------------------------------------
     void Start()
     {
@@ -32,6 +37,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         bombTimer += Time.deltaTime;
         crateTimer += Time.deltaTime;
+        ghostTimer += Time.deltaTime;
         if (bombTimer > bombSpawnTimer)
         {
             bombTimer = 0;
@@ -42,7 +48,13 @@ public class ObjectSpawner : MonoBehaviour
             crateTimer = 0;
             SpawnObject(ObjectTypes.Crate);
         }
+        if (ghostTimer > ghostSpawnTimer)
+        {
+            ghostTimer = 0;
+            SpawnObject(ObjectTypes.Ghost);
+        }
     }
+    //--------------------------------------------------------------------------------
     void SpawnObject(ObjectTypes type)
     {
         int spawnQuantity;
@@ -57,6 +69,10 @@ public class ObjectSpawner : MonoBehaviour
                 spawnQuantity = crateSpawnQuantity;
                 go = crateGameObject;
                 break;
+            case ObjectTypes.Ghost:
+                spawnQuantity = ghostSpawnQuantity;
+                go = ghostGameObject;
+                break;
             default:
                 spawnQuantity = 0;
                 go = null;
@@ -69,7 +85,7 @@ public class ObjectSpawner : MonoBehaviour
             {
                 spawnPos.x = Random.Range(1, bounds.x);
                 spawnPos.z = Random.Range(1, bounds.z);
-                spawnPos.y = terrain.terrainData.GetHeight((int) spawnPos.x, (int) spawnPos.z) + 0.25f;
+                spawnPos.y = terrain.terrainData.GetHeight((int)spawnPos.x, (int)spawnPos.z) + 0.25f;
             } while (!IsPosValid(spawnPos));
             Instantiate(go, spawnPos, Quaternion.identity);
         }
@@ -82,4 +98,5 @@ public class ObjectSpawner : MonoBehaviour
             return hitCollider.attachedRigidbody == null;
         return true;
     }
+    //--------------------------------------------------------------------------------
 }

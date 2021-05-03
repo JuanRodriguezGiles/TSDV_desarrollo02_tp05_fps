@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Bomb : MonoBehaviour,GameManager.IEnemy
+public class Bomb : MonoBehaviour, GameManager.IEnemy
 {
     //--------------------------------------------------------------------------------
     public void OnDie()
@@ -12,7 +12,7 @@ public class Bomb : MonoBehaviour,GameManager.IEnemy
     }
     //--------------------------------------------------------------------------------
     public int id;
-    public enum EnemyState
+    enum EnemyState
     {
         Idle,
         FuseLit,
@@ -67,7 +67,7 @@ public class Bomb : MonoBehaviour,GameManager.IEnemy
         if (bomb.gameObject.GetInstanceID() != this.id) return;
         Vector3 playerPos = FindObjectOfType<CharacterController>().transform.position;
         float distance = Vector3.Distance(playerPos, bomb.transform.position);
-        if (distance < explosionRadius) 
+        if (distance < explosionRadius)
             GameManager.Get().OnPlayerHpChange(-bomb.Damage);
         Destroy(this.gameObject);
     }
