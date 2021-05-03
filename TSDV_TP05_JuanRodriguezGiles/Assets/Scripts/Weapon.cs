@@ -8,8 +8,8 @@ public class Weapon : MonoBehaviour
     {
         Pistol,
         BallLauncher
-    }
-    public int currentWeapon;
+    } 
+    int currentWeapon;
     //--------------------------------------------------------------------------------
     void WeaponSwitch(int selectedWeapon)
     {

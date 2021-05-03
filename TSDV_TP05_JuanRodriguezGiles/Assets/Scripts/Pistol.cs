@@ -38,7 +38,7 @@ public class Pistol : MonoBehaviour
         Bullets--;
 
         if (!Physics.Raycast(ray, out hit, Range) || Bullets == 0) return;
-        if (hit.rigidbody.GetComponent<GameManager.IEnemy>() == null) return;
+        if (hit.rigidbody.GetComponent<GameManager.IEnemy>() == null || hit.rigidbody.gameObject.tag != "Bomb") return;
         hit.rigidbody.GetComponent<GameManager.IEnemy>().OnDie();
     }
     void Reload(int currentWeapon)

@@ -87,22 +87,32 @@ public class GameManager : MonoBehaviour
     {
         onWeaponSwitch?.Invoke(selectedWeapon);
     }
-    //--------------------------------------------------------------------------------
     public static event Action<int> onWeaponShoot;
     public void OnWeaponShoot(int currentWeapon)
     {
         onWeaponShoot?.Invoke(currentWeapon);
     }
-    //--------------------------------------------------------------------------------
     public static event Action<int> onWeaponReload;
     public void OnWeaponReload(int currentWeapon)
     {
         onWeaponReload?.Invoke(currentWeapon);
     }
     //--------------------------------------------------------------------------------
-    #endregion
-    void Update()
+    public static event Action<Bomb,float> onBombTriggered;
+    public void OnBombTriggered(Bomb bomb,float triggerTime)
     {
-
+        onBombTriggered?.Invoke(bomb,triggerTime);
     }
+    public static event Action<Bomb> onBombExploded;
+    public void OnBombExploded(Bomb bomb)
+    {
+        onBombExploded?.Invoke(bomb);
+    }
+    public static event Action<Bomb> onBombDestroyed;
+    public void OnBombDestroyed(Bomb bomb)
+    {
+        onBombDestroyed?.Invoke(bomb);
+    }
+    //--------------------------------------------------------------------------------
+    #endregion
 }

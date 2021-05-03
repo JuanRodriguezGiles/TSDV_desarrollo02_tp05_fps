@@ -364,9 +364,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 1680402941}
-  bombGameObject: {fileID: 0}
-  crateGameObject: {fileID: 0}
-  bombSpawnTimer: 10
+  bombGameObject: {fileID: 3339831867085299697, guid: f52535ca9f6c7704590e33e6e749ff06,
+    type: 3}
+  crateGameObject: {fileID: 8141742982891428700, guid: 92ee3bdb49836fa4a98588994ea730a0,
+    type: 3}
+  bombSpawnTimer: 2
   bombSpawnQuantity: 100
   crateSpawnTimer: 20
   crateSpawnQuantity: 75
@@ -658,7 +660,7 @@ GameObject:
   - component: {fileID: 636311188}
   m_Layer: 0
   m_Name: FPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

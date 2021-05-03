@@ -12,11 +12,12 @@ public class ObjectSpawner : MonoBehaviour
     enum ObjectTypes
     {
         Bomb,
-        Crate
+        Crate,
+        Ghost
     }
     //--------------------------------------------------------------------------------
     float bombTimer = 0;
-    [SerializeField] float bombSpawnTimer = 10;
+    [SerializeField] float bombSpawnTimer = 2;
     [SerializeField] int bombSpawnQuantity = 100;
     //--------------------------------------------------------------------------------
     float crateTimer = 0;
@@ -68,7 +69,7 @@ public class ObjectSpawner : MonoBehaviour
             {
                 spawnPos.x = Random.Range(1, bounds.x);
                 spawnPos.z = Random.Range(1, bounds.z);
-                spawnPos.y = terrain.terrainData.GetHeight((int)spawnPos.x, (int)spawnPos.z);
+                spawnPos.y = terrain.terrainData.GetHeight((int) spawnPos.x, (int) spawnPos.z) + 0.25f;
             } while (!IsPosValid(spawnPos));
             Instantiate(go, spawnPos, Quaternion.identity);
         }
