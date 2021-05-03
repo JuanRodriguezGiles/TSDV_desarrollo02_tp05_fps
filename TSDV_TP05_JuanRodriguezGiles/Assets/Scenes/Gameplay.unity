@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 429872419}
   - component: {fileID: 429872421}
   - component: {fileID: 429872420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrossHairRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 624802452}
   - component: {fileID: 633482260}
   - component: {fileID: 636311188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FPSController
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 630115668}
   - component: {fileID: 636211572}
   - component: {fileID: 623779634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 797024253}
   - component: {fileID: 797024255}
   - component: {fileID: 797024254}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrossHairTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1056,6 +1056,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 346043319306285259, guid: 32f50fcd73a8f1647a29b830504e7d04,
         type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 346043319306285259, guid: 32f50fcd73a8f1647a29b830504e7d04,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -1137,7 +1142,7 @@ GameObject:
   - component: {fileID: 956465259}
   - component: {fileID: 956465261}
   - component: {fileID: 956465260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrossHairLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1210,7 +1215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1211632119}
   - component: {fileID: 1211632118}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TerrainGroup_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1256,6 +1261,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 712677616906571761, guid: f93f5cb2612aec342a81acfead9a54f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 712677616906571761, guid: f93f5cb2612aec342a81acfead9a54f3,
         type: 3}
@@ -1434,7 +1444,7 @@ GameObject:
   - component: {fileID: 1328773924}
   - component: {fileID: 1328773923}
   - component: {fileID: 1328773922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UICrosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1534,7 +1544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1348245688}
   - component: {fileID: 1348245689}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1699,7 +1709,7 @@ GameObject:
   - component: {fileID: 1680402939}
   - component: {fileID: 1680402941}
   - component: {fileID: 1680402940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain_0_0_09c85ea0-e28f-420b-a1cc-fe21e1743645
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1908,7 +1918,7 @@ GameObject:
   - component: {fileID: 2027433459}
   - component: {fileID: 2027433461}
   - component: {fileID: 2027433460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrossHairBot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

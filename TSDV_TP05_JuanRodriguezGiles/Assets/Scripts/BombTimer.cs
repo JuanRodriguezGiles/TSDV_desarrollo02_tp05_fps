@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-//ARREGLAR BUG CUANDO SE SALE Y ENTRA AL COLLIDER
 public class BombTimer : MonoBehaviour
 {
     public TMP_Text time;

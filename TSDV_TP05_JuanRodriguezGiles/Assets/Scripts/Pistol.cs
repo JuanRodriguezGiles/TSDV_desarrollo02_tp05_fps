@@ -32,12 +32,16 @@ public class Pistol : MonoBehaviour
         float x = Input.GetAxis("Mouse X");
         float y = Input.GetAxis("Mouse Y");
         Vector3 mousePos = Input.mousePosition;
+
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         RaycastHit hit;
 
+        int layerMask = 1 << 8;
+        layerMask = ~layerMask;
+
         Bullets--;
 
-        if (!Physics.Raycast(ray, out hit, Range) || Bullets == 0) return;
+        if (!Physics.Raycast(ray, out hit, Range, layerMask) || Bullets == 0) return;
         if (hit.rigidbody.GetComponent<GameManager.IEnemy>() == null || hit.rigidbody.gameObject.tag != "Bomb") return;
         hit.rigidbody.GetComponent<GameManager.IEnemy>().OnDie();
     }
