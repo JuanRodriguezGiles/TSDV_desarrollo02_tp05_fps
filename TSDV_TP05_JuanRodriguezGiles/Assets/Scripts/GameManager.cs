@@ -24,10 +24,12 @@ public class GameManager : MonoBehaviour
     void OnEnable()
     {
         onPlayerHpChange += UpdatePlayerHp;
+        onPlayerScoreChange += UpdatePlayerScore;
     }
     void OnDisable()
     {
         onPlayerHpChange -= UpdatePlayerHp;
+        onPlayerScoreChange -= UpdatePlayerScore;
     }
     #endregion
 
@@ -65,6 +67,10 @@ public class GameManager : MonoBehaviour
     {
         if (PlayerHP <= 0)
             LoadGameOverScene();
+    }
+    void UpdatePlayerScore(int scoreChange)
+    {
+        PlayerScore += scoreChange;
     }
     #endregion
 
@@ -131,6 +137,11 @@ public class GameManager : MonoBehaviour
     public void OnPlayerHpChange(int hpChange)
     {
         onPlayerHpChange?.Invoke(hpChange);
+    }
+    public static event Action<int> onPlayerScoreChange;
+    public void OnPlayerScoreChange(int scorechange)
+    {
+        onPlayerScoreChange?.Invoke(scorechange);
     }
     //--------------------------------------------------------------------------------
     #endregion

@@ -21,6 +21,7 @@ public class Bomb : MonoBehaviour,GameManager.IEnemy
     [SerializeField] private EnemyState currentState = EnemyState.Idle;
     public int Damage { get; } = 50;
     public int Points { get; } = 100;
+    float explosionRadius = 5;
     float fuseTimer = 5;
     float triggeredTime;
     //--------------------------------------------------------------------------------
@@ -66,7 +67,7 @@ public class Bomb : MonoBehaviour,GameManager.IEnemy
         if (bomb.gameObject.GetInstanceID() != this.id) return;
         Vector3 playerPos = FindObjectOfType<CharacterController>().transform.position;
         float distance = Vector3.Distance(playerPos, bomb.transform.position);
-        if (distance < 5)
+        if (distance < explosionRadius) 
             GameManager.Get().OnPlayerHpChange(-bomb.Damage);
         Destroy(this.gameObject);
     }
@@ -74,7 +75,7 @@ public class Bomb : MonoBehaviour,GameManager.IEnemy
     void OnBombDestroyed(Bomb bomb)
     {
         if (bomb.gameObject.GetInstanceID() != this.id) return;
-        GameManager.Get().PlayerScore += bomb.Points;
+        GameManager.Get().OnPlayerScoreChange(bomb.Points);
         Destroy(this.gameObject);
     }
     //--------------------------------------------------------------------------------
