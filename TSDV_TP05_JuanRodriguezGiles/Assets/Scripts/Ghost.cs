@@ -104,6 +104,9 @@ public class Ghost : MonoBehaviour, GameManager.IEnemy
     {
         if (ghost.gameObject.GetInstanceID() != this.id) return;
         Hp -= damage;
+        currentState = EnemyState.Idle;
+        idleStart = Time.time;
+        idlePos = transform.position;
         if (Hp == 0)
             OnDie();
     }
