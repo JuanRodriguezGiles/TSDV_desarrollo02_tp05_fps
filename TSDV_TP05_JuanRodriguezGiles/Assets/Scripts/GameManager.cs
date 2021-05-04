@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        if (File.Exists("playerHighScore.dat"))
+        {
+            fs = File.OpenRead("playerHighScore.dat");
+            PlayerHighScore = (int)bf.Deserialize(fs);
+            fs.Close();
+        }
     }
     void OnEnable()
     {
@@ -39,13 +45,6 @@ public class GameManager : MonoBehaviour
     public void LoadGameplayScene()
     {
         SceneManager.LoadScene("Gameplay");
-
-        if (File.Exists("playerHighScore.dat"))
-        {
-            fs = File.OpenRead("playerHighScore.dat");
-            PlayerHighScore = (int)bf.Deserialize(fs);
-            fs.Close();
-        }
     }
     void LoadGameOverScene()
     {
